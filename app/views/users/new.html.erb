@@ -1,0 +1,10 @@
+<br><h1>Sign Up</h1><br>
+<%= form_for :user, url: '/signup' do |f| %>
+    <label>Username: </label><br>
+    <%= f.text_field :username %><br>
+    <label>Password: </label><br>
+    <%= f.password_field :password %><br>
+    <label>Password Confirmation: </label><br>
+    <%= f.password_field :password_confirmation %><br><br>
+    <%= f.submit "Sign Up", :class => 'btn-primary' %>
+<% end %> 
