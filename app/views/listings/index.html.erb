@@ -1,5 +1,5 @@
 <ul style="list-style-type:none;">
     <% @listings.each do |l| %>
-        <li><%= link_to l.title, listing_path(l) %></li>
+        <li><%= l.updated_at.strftime("%-m/%-d/%Y") %> - <%= link_to l.title, listing_path(l) %></li>
     <% end %>
 </ul>

@@ -1,0 +1,3 @@
+<%= button_to "Back to Listing", listing_path(@listing), method: "get", :class => "btn btn-outline-success"  %><br>
+<h1>New Bid for '<%= @listing.title %>'</h1>
+<%= render 'form' %>

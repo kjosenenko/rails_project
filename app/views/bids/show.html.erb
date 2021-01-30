@@ -1,0 +1,10 @@
+<%= button_to "Back to Bid", listing_bid_path(@listing, @bid), method: "get", :class => "btn btn-outline-success"  %><br>
+<h1>Bid for: <%= @listing.title %></h1>
+<small>by: <%= @bid.user.username %></small>
+<br><br>
+<p>$<%= @bid.amount %></p>
+<p><%= @bid.message %></p>
+<div class="btn-group">
+    <%= button_to "Edit Bid", edit_listing_bid_path(@listing, @bid), method: "get", :class => "btn btn-outline-secondary" %>
+    <%= button_to "Delete Bid", listing_bid_path(@listing, @bid), method: "delete", :class => "btn btn-outline-danger" %>
+</div>
