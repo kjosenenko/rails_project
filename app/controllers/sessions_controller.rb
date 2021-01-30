@@ -8,15 +8,18 @@ class SessionsController < ApplicationController
     def create
         user = User.find_by(username: params[:username])
         user = user.try(:authenticate, params[:password])
-        return redirect_to(controller: 'sessions', action: 'new') unless user
-        session[:user_id] = user.id
-        @user = user
-        redirect_to '/'
-      end
+        if user
+            session[:user_id] = user.id
+            redirect_to root_path
+        else
+            flash[:error] = ["There was a problem logging in. Please make sure you use the correct username & password."]
+            render :new
+        end
+    end
 
     def destroy
         session.delete :user_id
-        redirect_to '/'
+        redirect_to root_path
     end
 
     def github
@@ -28,7 +31,8 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to root_path
         else
-            redirect_to "/login"
+            flash[:error] = ["There was a problem logging in."]
+            render :new
         end
     end
 end

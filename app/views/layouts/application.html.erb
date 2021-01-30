@@ -12,7 +12,10 @@
   </head>
 
   <body>
+    <%= render "layouts/navbar" %>
     <div class="container">
+      <br><br>
+      <%= render "layouts/flash" %>
       <%= yield %>
     </div>
   </body>

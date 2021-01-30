@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  resource :listings
-  resource :bids
+  resources :listings do
+    resources :bids
+  end
 end

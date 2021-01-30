@@ -1,0 +1,8 @@
+<% if flash[:error] %>
+    <% flash[:error].each do |error| %>
+        <div class="alert alert-danger">
+        <%= error %>
+        </div>
+    <% end %>
+<% end %>
+<%= content_tag(:div, content_tag("p", flash[:notice]), class: "alert alert-success") if flash[:notice] %>

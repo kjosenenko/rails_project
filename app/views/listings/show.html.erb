@@ -1,0 +1,7 @@
+<h1><%= @listing.title %></h1>
+<small>Posted by: <%= @listing.user.username %></small>
+<br><br>
+<p><%= @listing.description %></p>
+
+<%= link_to "Edit Listing", edit_listing_path(@listing) %>
+<%= link_to "Delete Listing", listing_path(@listing), method: "delete" %>

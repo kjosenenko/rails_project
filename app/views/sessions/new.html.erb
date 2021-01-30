@@ -1,4 +1,4 @@
-<br><h1>Login</h1><br>
+<h1>Login</h1><br>
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
   <label>Username: </label><br>
   <input name='username' type="text"><br>
@@ -6,3 +6,5 @@
   <input name='password' type="password"><br><br>
   <input class="btn-primary" type=submit value='Login'>
 <% end %>
+
+<%= button_to "Logout", logout_path, :class => 'btn-danger'%>

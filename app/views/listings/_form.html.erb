@@ -1,0 +1,7 @@
+<%= form_for @listing do |f| %>
+    <label>Title:</label><br>
+    <%= f.text_field :title %><br>
+    <label>Description:</label><br>
+    <%= f.text_area :description%><br><br>
+    <%= f.submit "Post Listing", :class => 'btn-primary' %>
+<% end %>

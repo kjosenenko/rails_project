@@ -3,10 +3,15 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params)
-        return redirect_to controller: 'users', action: 'new' unless @user.save
-        session[:user_id] = @user.id
-        redirect_to '/'
+        @user = User.new(user_params)
+            if @user.save
+            return redirect_to controller: 'users', action: 'new' unless @user.save
+            session[:user_id] = @user.id
+            redirect_to '/'
+        else
+            flash.now[:error] = @user.errors.full_messages
+            render :new
+        end
     end
     
     private
