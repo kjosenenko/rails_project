@@ -3,7 +3,8 @@ class BidsController < ApplicationController
     before_action :find_listing, except: [:my_bids]
     before_action :find_bid, only: [:show, :edit, :update, :destroy]
 
-    def index 
+    def index
+        @bids = @listing.bids
     end
 
     def my_bids
