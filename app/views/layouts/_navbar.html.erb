@@ -13,10 +13,10 @@
                         <%= button_to "New Listing", new_listing_path, method: :get, :class => 'btn btn-success'%>
                     </li>
                     <li class="nav_item">
-                        <%= button_to "My Listings", root_path, :class => 'btn btn-success'%>
+                        <%= button_to "My Listings", '/my_listings', method: :get, :class => 'btn btn-success'%>
                     </li>
                     <li class="nav_item">
-                        <%= button_to "My Bids", root_path, :class => 'btn btn-success'%>
+                        <%= button_to "My Bids", '/my_bids', method: :get, :class => 'btn btn-success'%>
                     </li>
                     <li class="nav_item">
                         <%= button_to "Logout", logout_path, :class => 'btn btn-dark'%>

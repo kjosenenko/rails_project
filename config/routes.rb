@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'listings#index'
   
   match '/auth/:provider/callback', to: 'sessions#github', via: [:get, :post]
+  
+  get '/my_listings' => 'listings#my_listings'
+  get '/my_bids' => 'bids#my_bids'
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
@@ -13,4 +16,5 @@ Rails.application.routes.draw do
   resources :listings do
     resources :bids
   end
+   
 end

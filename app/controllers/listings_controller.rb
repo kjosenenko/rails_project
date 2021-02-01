@@ -6,6 +6,11 @@ class ListingsController < ApplicationController
         @listings = Listing.all
     end
 
+    def my_listings
+        @listings = Listing.where(user_id: current_user.id)
+        render :index
+    end
+
     def show
     end
 

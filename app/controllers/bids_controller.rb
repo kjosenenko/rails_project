@@ -1,9 +1,14 @@
 class BidsController < ApplicationController
 
-    before_action :find_listing
+    before_action :find_listing, except: [:my_bids]
     before_action :find_bid, only: [:show, :edit, :update, :destroy]
 
     def index 
+    end
+
+    def my_bids
+        @bids = Bid.where(user_id: current_user.id)
+        render :index
     end
 
     def show 

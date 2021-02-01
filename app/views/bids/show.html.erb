@@ -1,4 +1,4 @@
-<%= button_to "Back to Bid", listing_bid_path(@listing, @bid), method: "get", :class => "btn btn-outline-success"  %><br>
+<%= button_to "Back to Listing", listing_path(@listing), method: "get", :class => "btn btn-outline-success"  %><br>
 <h1>Bid for: <%= @listing.title %></h1>
 <small>by: <%= @bid.user.username %></small>
 <br><br>
