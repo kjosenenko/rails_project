@@ -1,3 +1,4 @@
+<%= button_to "Back to Listings", listings_path, method: "get", :class => "btn btn-outline-success"  %><br>
 <ul style="list-style-type:none;">
     <% @bids.each do |b| %>
         <li><%= b.listing.title %> - <%= link_to b.amount, listing_bid_path(b.listing, b) %></li>

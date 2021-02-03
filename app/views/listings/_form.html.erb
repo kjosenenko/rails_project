@@ -2,5 +2,6 @@
     <label>Title:</label><br>
     <%= f.text_field :title %><br>
     <label>Description:</label><br>
-    <%= f.text_area :description%><br><br>
+    <%= f.text_area :description, cols: "50", rows: "4"%><br><br>
+    <%= f.submit "Submit Listing", :class => "btn btn-success" %>
 <% end %>

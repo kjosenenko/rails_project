@@ -1,11 +1,8 @@
 <%= form_for @bid, url:listing_bids_path(@listing) do |f| %>
-    <div>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-    </div>
-    
+    <%= f.hidden_field :user_id, :value => current_user.id %>    
     <label>Amount:</label><br>
     <%= f.number_field :amount %><br>
     <label>Message:</label><br>
-    <%= f.text_area :message %><br>
-    <%= f.submit "Bid", :class => "btn btn-success" %>
+    <%= f.text_area :message, cols: "50", rows: "4" %><br>
+    <%= f.submit "Submit Bid", :class => "btn btn-success" %>
 <% end %>

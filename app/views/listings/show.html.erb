@@ -3,9 +3,14 @@
 <small>Posted by: <%= @listing.user.username %></small>
 <br><br>
 <p><%= @listing.description %></p>
-<%= button_to "Make Bid", new_listing_bid_path(@listing), method: "get", :class => "btn btn-outline-success" %>
-<div class="btn-group">
-    <%= button_to "View Bids", listing_bids_path(@listing), method: "get", :class => "btn btn-outline-success" %> 
-    <%= button_to "Edit Listing", edit_listing_path(@listing), method: "get", :class => "btn btn-outline-secondary" %>
-    <%= button_to "Delete Listing", listing_path(@listing), method: "delete", :class => "btn btn-outline-danger" %>
-</div>
+<% if logged_in? %>
+    <% if owns_listing? %>
+        <div class="btn-group">
+            <%= button_to "View Bids", listing_bids_path(@listing), method: "get", :class => "btn btn-outline-success" %> 
+            <%= button_to "Edit Listing", edit_listing_path(@listing), method: "get", :class => "btn btn-outline-secondary" %>
+            <%= button_to "Delete Listing", listing_path(@listing), method: "delete", :class => "btn btn-outline-danger" %>
+        </div>
+    <% else %>
+        <%= button_to "Make Bid", new_listing_bid_path(@listing), method: "get", :class => "btn btn-outline-success" %>
+    <% end %>
+<% end %>

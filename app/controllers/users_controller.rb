@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
+    
+    before_action :find_user, only: :show
+    
     def new
+        if !logged_in?
+            render :new
+        else
+            redirect_to '/'
+        end
     end
 
     def create
@@ -13,10 +21,17 @@ class UsersController < ApplicationController
             render :new
         end
     end
+
+    def show
+    end
     
     private
 
     def user_params
         params.require(:user).permit(:username, :password, :password_confirmation)
+    end
+
+    def find_user
+        @user = User.find(params[:id])
     end
 end

@@ -3,6 +3,11 @@ class SessionsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: :github
 
     def new
+        if !logged_in?
+            render :new
+        else
+            redirect_to '/'
+        end
     end
 
     def create
