@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
     
     before_action :find_user
+    before_action :require_login
     
     def new
         @review = @user.reviews.build
