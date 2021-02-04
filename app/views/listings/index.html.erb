@@ -1,3 +1,9 @@
+<%= form_tag("/find", method: "get") do %>
+  <label>Search Listings for: </label>
+  <%= text_field_tag :query %>
+  <input class="btn btn-success" type=submit value='Find Listing'>
+<% end %>
+<br>
 <ul style="list-style-type:none;">
     <% @listings.each do |l| %>
         <li><%= l.updated_at.strftime("%-m/%-d/%Y") %> - <%= link_to l.title, listing_path(l) %></li>

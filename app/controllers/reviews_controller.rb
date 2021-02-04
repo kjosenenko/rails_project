@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
     
     before_action :find_user
-    before_action :find_review, only: :show
     
     def new
         @review = @user.reviews.build
@@ -18,6 +17,7 @@ class ReviewsController < ApplicationController
     end
 
     def show
+        @review = Review.find(params[:id])
     end
 
     private
@@ -28,10 +28,6 @@ class ReviewsController < ApplicationController
 
     def find_user
         @user = User.find(params[:user_id])
-    end
-
-    def find_review
-        @review = Review.find(params[:id])
     end
 
 end

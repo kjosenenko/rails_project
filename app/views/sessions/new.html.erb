@@ -1,8 +1,8 @@
 <h1>Login</h1><br>
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
   <label>Username: </label><br>
-  <input name='username' type="text"><br>
+  <%= text_field_tag :username %><br>
   <label>Password: </label><br>
-  <input name='password' type="password"><br><br>
-  <input class="btn-success" type=submit value='Login'>
+  <%= password_field_tag :password %><br><br>
+  <input class="btn btn-success" type=submit value='Login'>
 <% end %>

@@ -8,6 +8,11 @@ class ListingsController < ApplicationController
     def index 
         @listings = Listing.all
     end
+
+    def find
+        @listings = Listing.search(params[:query])
+        render :index
+    end
     
     # logged in
     def my_listings
