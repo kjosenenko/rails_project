@@ -4,7 +4,7 @@
 <br>
 <%= form_for @review, url:user_reviews_path(@user) do |f| %>
     <%= f.hidden_field :author, :value => current_user.username %>    
-    <label>Skill:</label> <%=f.collection_select :skill_id, Skill.all, :id, :name%><br><br>
+    <label>Skill:</label> <%=f.collection_select :skill_id, Skill.all, :id, :name, {include_blank: true} %><br><br>
     <label>Comment:</label><br>
     <%= f.text_area :comment, cols: "50", rows: "4"%><br>
     <%= f.submit "Post Review", :class => "btn btn-success" %>

@@ -1,4 +1,4 @@
-<%= form_for @bid, url:listing_bids_path(@listing) do |f| %>
+<%= form_for bid, url:url do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>    
     <label>Amount:</label><br>
     <%= f.number_field :amount %><br>

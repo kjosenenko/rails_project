@@ -50,6 +50,12 @@ class BidsController < ApplicationController
     end
 
     def update
+        if @bid.update(bid_params)
+            redirect_to listing_bid_path(@listing, @bid)
+        else
+            flash.now[:error] = @bid.errors.full_messages
+            render :edit
+        end
     end
     
     def destroy
