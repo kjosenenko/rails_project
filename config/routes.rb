@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  resources :skills, only: :index
+  resources :skills, only: [:index, :show]
 
   resources :users, only: :show do
     resources :reviews
