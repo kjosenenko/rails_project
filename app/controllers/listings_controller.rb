@@ -48,6 +48,7 @@ class ListingsController < ApplicationController
     end
     
     def destroy
+        @listing.bids.destroy_all
         @listing.delete
         flash[:notice] = "'#{@listing.title}' was deleted."
         redirect_to listings_path
