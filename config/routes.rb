@@ -15,12 +15,14 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-
+  resources :conversations, except: [:edit, :update] 
+  
+  resources :messages, only: [:new, :create]
 
   resources :skills, only: [:index, :show]
 
   resources :users, only: :show do
-    resources :reviews
+    resources :reviews, only: [:new, :create, :show]
   end
 
   resources :listings do
