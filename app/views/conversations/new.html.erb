@@ -1,0 +1,11 @@
+<h3>Message to <%= @recipient.username %>:</h3>
+<%= form_for @conversation do |f| %>
+    <%= f.fields_for :messages do |m| %>
+        <%= m.hidden_field :sender, :value => current_user.username %>
+        <%= m.text_area :message, cols: "50", rows: "4" %>
+    <% end %>
+    <%= f.fields_for :participants do |m| %>
+        <%= m.hidden_field :user_id, :value => params[:user_id] %>
+    <% end %>
+    <%= f.submit "Send", :class => "btn btn-success" %>
+<% end %>
