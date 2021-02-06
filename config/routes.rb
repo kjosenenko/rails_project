@@ -21,9 +21,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :show]
   end
 
-  resources :conversations, except: [:edit, :update, :new] 
-  
-  resources :messages, only: [:new, :create]
+  resources :conversations, except: [:edit, :update, :new] do
+    resources :messages, only: [:new, :create]
+  end
 
   resources :skills, only: [:index, :show]
 

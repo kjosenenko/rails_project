@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
-    helper_method  :current_user, :logged_in?, :require_login, :require_owns_listing, :owns_listing?
+    
+    helper_method  :current_user, :logged_in?, :require_login, :require_owns_listing, :owns_listing?, :other_users
+    
     private 
 
     def require_owns_listing
@@ -21,4 +23,9 @@ class ApplicationController < ActionController::Base
     def logged_in? 
         !!session[:user_id]
     end
+
+    def other_users
+        @conversation.users.reject { |user| user.id == current_user.id}
+    end
+
 end

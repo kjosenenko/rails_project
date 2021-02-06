@@ -1,7 +1,12 @@
 class ConversationsController < ApplicationController
     
+    before_action :find_conversation, only: [:show, :destroy]
+
+    def index
+    end
+
     def show
-        @conversation = Conversation.find(params[:id])
+        @other_users = other_users
     end
     
     def new
@@ -22,9 +27,20 @@ class ConversationsController < ApplicationController
         end
     end
 
+    def destroy
+        @conversation.participants.destroy_all
+        @conversation.messages.destroy_all
+        @conversation.delete
+        redirect_to conversations_path
+    end
+
     private
 
     def conversation_params
         params.require(:conversation).permit(messages_attributes: [:message, :sender], participants_attributes: [:user_id])
+    end
+
+    def find_conversation
+        @conversation = Conversation.find(params[:id])
     end
 end

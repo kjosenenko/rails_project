@@ -1,0 +1,8 @@
+<% @other_users.each do |user| %>
+    <h4>New Message to <%= user.username %>:</h4>
+<% end %>
+
+<%= form_for @message, url:conversation_messages_path(@conversation) do |f| %>
+    <%= f.text_area :message, cols: "50", rows: "4" %><br>
+    <%= f.submit "Send Message", :class => 'btn btn-success' %>
+<% end %>
