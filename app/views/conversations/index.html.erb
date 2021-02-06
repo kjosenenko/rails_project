@@ -1,0 +1,16 @@
+<% @conversations.each do |conversation| %>
+    <div class="card">
+        <div class="card-body btn-success">
+            <h3 class="card-title">
+                <%conversation.users.reject { |user| user.id == current_user.id}.each do |user| %>
+                    Conversation with <%= user.username %>
+                 <% end %>
+            </h3>
+            <p class="card-text">
+                <%= conversation.messages.last.sender %>: <%= conversation.messages.last.message %>
+            </p>
+            <%= button_to "View Conversation", conversation_path(conversation), method: :get, :class => 'btn btn-light' %>
+        </div>
+    </div>
+    <br><br>
+<% end %>

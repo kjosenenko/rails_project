@@ -25,6 +25,9 @@
                         <%= button_to "View Contractors", skills_path, method: :get, :class => 'btn btn-success'%>
                     </li>
                     <li class="nav_item">
+                        <%= button_to "Messages", conversations_path, method: :get, :class => 'btn btn-success'%>
+                    </li>
+                    <li class="nav_item">
                         <%= button_to "Logout", logout_path, :class => 'btn btn-dark'%>
                     </li>
                 <% else %>
