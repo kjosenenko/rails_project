@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
     
     before_action :find_listing, only: [:show, :edit, :update, :destroy]
-    before_action :require_login, only: [:my_listings, :new, :create]
+    before_action :require_login, except: [:index, :find, :show]
     before_action :require_owns_listing, only: [:edit, :update, :destroy]
     
     def index 

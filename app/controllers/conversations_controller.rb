@@ -1,6 +1,9 @@
 class ConversationsController < ApplicationController
     
+    before_action :require_login
     before_action :find_conversation, only: [:show, :destroy]
+    before_action :require_in_conversation, only: [:show, :destroy]
+
 
     def index
         @conversations = current_user.conversations

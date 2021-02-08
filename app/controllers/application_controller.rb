@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     
-    helper_method  :current_user, :logged_in?, :require_login, :require_owns_listing, :owns_listing?, :other_users
+    helper_method  :current_user, :logged_in?, :require_login, :require_owns_listing, :owns_listing?, :other_users, :require_in_conversation
     
     private 
 
@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
 
     def owns_listing?
         current_user == @listing.user
+    end
+
+    def require_in_conversation
+        redirect_to controller: 'conversations', action: 'index' unless in_conversation?
+    end
+
+    def in_conversation?
+        @conversation.users.include?(current_user)
     end
 
     def require_login

@@ -5,7 +5,7 @@ class BidsController < ApplicationController
     before_action :find_listing, except: [:my_bids, :bids_on_my_listings]
     before_action :find_bid, only: [:show, :edit, :update, :destroy]
 
-    before_action :require_login, only: [:my_bids, :new, :create, :show, :bids_on_my_listings]
+    before_action :require_login
     before_action :require_owns_listing, only: [:index]
     before_action :require_owns_bid, only: [:edit, :update, :destroy]
 

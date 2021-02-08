@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
     
     before_action :find_conversation
+    before_action :require_login
+    before_action :require_in_conversation
 
     def new
         @other_users = other_users
