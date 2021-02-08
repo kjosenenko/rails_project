@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     end
 
     def other_users
-        @conversation.users.reject { |user| user.id == current_user.id}
+        @other_users = @conversation.users.reject { |user| user.id == current_user.id}
     end
 
 end

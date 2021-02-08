@@ -3,14 +3,13 @@ class ConversationsController < ApplicationController
     before_action :require_login
     before_action :find_conversation, only: [:show, :destroy]
     before_action :require_in_conversation, only: [:show, :destroy]
-
+    before_action :other_users, only: :show
 
     def index
         @conversations = current_user.conversations
     end
 
     def show
-        @other_users = other_users
     end
     
     def new
@@ -22,12 +21,15 @@ class ConversationsController < ApplicationController
 
     def create 
         @conversation = Conversation.new(conversation_params)
+        @message = @conversation.messages.last
         if @conversation.save
             Participant.create(conversation_id: @conversation.id, user_id: current_user.id)
             redirect_to conversation_path(@conversation)
         else
-            flash[:error] = ["Your message could not be sent, please try again."]
-            render :new
+            @user = User.find(params[:conversation][:participants_attributes]['0'][:user_id])
+            @skills = Skill.all
+            flash.now[:error] = @message.errors.full_messages
+            render 'users/show'
         end
     end
 

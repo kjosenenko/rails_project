@@ -3,9 +3,9 @@ class MessagesController < ApplicationController
     before_action :find_conversation
     before_action :require_login
     before_action :require_in_conversation
+    before_action :other_users
 
     def new
-        @other_users = other_users
         @message = @conversation.messages.build
     end
 
@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
         if @message.save
             redirect_to conversation_path(@conversation)
         else
-            flash[:error] = ["Your message could not be sent, please try again."]
+            flash.now[:error] = @message.errors.full_messages
             render :new
         end
     end
