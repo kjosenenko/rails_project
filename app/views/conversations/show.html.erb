@@ -1,8 +1,10 @@
 <% @other_users.each do |user| %>
     <h2>Conversation with <%= user.username %></h2>
 <% end %>
-
-<%= button_to "New Message", new_conversation_message_path(@conversation), method: :get, :class => 'btn btn-success'%>
+<div class="btn-group">
+    <%= button_to "New Message", new_conversation_message_path(@conversation), method: :get, :class => 'btn btn-success'%>
+    <%= button_to "Delete Conversation", conversation_path(@conversation), method: "delete", :class => "btn btn-danger" %>
+</div>
 <% @conversation.messages.each do |m| %>
     <hr>
     <small><b><%= m.sender %>:</b></small>
