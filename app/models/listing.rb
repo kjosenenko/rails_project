@@ -3,12 +3,6 @@ class Listing < ApplicationRecord
   has_many :bids
   validates :title, :description, presence: true
 
-  def self.search(word)
-    if word
-      self.where("title LIKE ?", "%#{word}%")
-    else
-      Listing.all
-    end
-  end
+  scope :search, ->(string) {where("title LIKE ?", "%#{string}%") if string.present? }
 
 end
