@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             redirect_to root_path
         else
-            flash[:error] = ["There was a problem logging in. Please make sure you use the correct username & password."]
+            flash.now[:error] = ["There was a problem logging in. Please make sure you use the correct username & password."]
             render :new
         end
     end
@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to root_path
         else
-            flash[:error] = ["There was a problem logging in."]
+            flash.now[:error] = ["There was a problem logging in."]
             render :new
         end
     end

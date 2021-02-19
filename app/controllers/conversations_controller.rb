@@ -10,6 +10,7 @@ class ConversationsController < ApplicationController
     end
 
     def show
+        @messages = @conversation.messages.descending
     end
     
     def new

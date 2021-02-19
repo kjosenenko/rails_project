@@ -5,4 +5,5 @@ class Conversation < ApplicationRecord
 
     accepts_nested_attributes_for :messages
     accepts_nested_attributes_for :participants
+
 end

@@ -5,9 +5,10 @@
     <%= button_to "New Message", new_conversation_message_path(@conversation), method: :get, :class => 'btn btn-success'%>
     <%= button_to "Delete Conversation", conversation_path(@conversation), method: "delete", :class => "btn btn-danger" %>
 </div>
-<% @conversation.messages.each do |m| %>
+<% @messages.each do |m| %>
     <hr>
     <small><b><%= m.sender %>:</b></small>
     <p><%= m.message %></p>
+    <p><%= m.created_at.strftime("%b %e, %l:%M %p") %></p>
 <% end %>
 
