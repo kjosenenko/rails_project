@@ -18,9 +18,9 @@ $ rake db:migrate
 
 $ rake db:seed
 ```
-From there you can run the app by executing the shotgun command and serving on port :9393
+From there you can run the app by executing the shotgun command and serving on port :3000
 ```
-$ shotgun
+$ rails s
 ```
 
 ### Using this application
